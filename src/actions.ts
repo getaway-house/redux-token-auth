@@ -145,6 +145,7 @@ const generateAuthActions = (config: { [key: string]: any }): ActionsExport => {
       email,
       password,
       password_confirmation: passwordConfirmation,
+      confirm_success_url: '/',
     }
     Object.keys(userRegistrationAttributes).forEach((key: string) => {
       const backendKey = userRegistrationAttributes[key]

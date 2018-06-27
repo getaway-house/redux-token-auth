@@ -72,11 +72,16 @@ exports.getUserAttributesFromResponse = function (userAttributes, response) {
     var invertedUserAttributes = utility_1.invertMapKeysAndValues(userAttributes);
     var userAttributesBackendKeys = Object.keys(invertedUserAttributes);
     var userAttributesToReturn = {};
-    Object.keys(response.data.data).forEach(function (key) {
+    var data = response.data.data ? response.data.data : response.data;
+    Object.keys(data).forEach(function (key) {
         if (userAttributesBackendKeys.indexOf(key) !== -1) {
-            userAttributesToReturn[invertedUserAttributes[key]] = response.data.data[key];
+            userAttributesToReturn[invertedUserAttributes[key]] = data[key];
         }
     });
+    userAttributesToReturn['access-token'] = response.headers['access-token'];
+    userAttributesToReturn.client = response.headers.client;
+    userAttributesToReturn.uid = response.headers.uid;
+    userAttributesToReturn.expiry = response.headers.expiry;
     return userAttributesToReturn;
 };
 //# sourceMappingURL=auth.js.map

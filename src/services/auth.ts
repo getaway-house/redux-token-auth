@@ -46,10 +46,15 @@ export const getUserAttributesFromResponse = (
   const invertedUserAttributes: SingleLayerStringMap = invertMapKeysAndValues(userAttributes)
   const userAttributesBackendKeys: string[] = Object.keys(invertedUserAttributes)
   const userAttributesToReturn: SingleLayerStringMap = {}
-  Object.keys(response.data.data).forEach((key: string) => {
+  const data = response.data.data ? response.data.data : response.data
+  Object.keys(data).forEach((key: string) => {
     if (userAttributesBackendKeys.indexOf(key) !== -1) {
-      userAttributesToReturn[invertedUserAttributes[key]] = response.data.data[key]
+      userAttributesToReturn[invertedUserAttributes[key]] = data[key]
     }
   })
+  userAttributesToReturn['access-token'] = response.headers['access-token']
+  userAttributesToReturn.client = response.headers.client
+  userAttributesToReturn.uid = response.headers.uid
+  userAttributesToReturn.expiry = response.headers.expiry
   return userAttributesToReturn
 }

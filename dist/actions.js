@@ -112,6 +112,7 @@ var generateAuthActions = function (config) {
                             email: email,
                             password: password,
                             password_confirmation: passwordConfirmation,
+                            confirm_success_url: '/',
                         };
                         Object.keys(userRegistrationAttributes).forEach(function (key) {
                             var backendKey = userRegistrationAttributes[key];
