@@ -115,8 +115,9 @@ var generateAuthActions = function (config) {
                             password_confirmation: passwordConfirmation,
                             confirm_success_url: '/',
                         };
-                        Object.keys(userRegistrationAttributes).forEach(function (key) {
-                            var backendKey = userRegistrationAttributes[key];
+                        Object.entries(userRegistrationAttributes).forEach(function (_a) {
+                            var snake = _a[0], key = _a[1];
+                            var backendKey = userRegistrationAttributes[snake];
                             data[backendKey] = userRegistrationDetails[key];
                         });
                         _a.label = 1;
