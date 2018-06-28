@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/getaway-house/redux-token-auth"
+    "url": "https://github.com/getaway-house/redux-token-auth.git"
   },
   "jest": {
     "transform": {
