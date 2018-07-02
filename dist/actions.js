@@ -200,7 +200,7 @@ var generateAuthActions = function (config) {
                         auth_1.persistAuthHeadersInDeviceStorage(Storage, response.headers);
                         userAttributesToSave = auth_1.getUserAttributesFromResponse(userAttributes, response);
                         dispatch(exports.signInRequestSucceeded(userAttributesToSave));
-                        return [3 /*break*/, 4];
+                        return [2 /*return*/, Promise.resolve(response.headers)];
                     case 3:
                         error_3 = _a.sent();
                         dispatch(exports.signInRequestFailed());
