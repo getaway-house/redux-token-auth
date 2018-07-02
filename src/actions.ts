@@ -207,7 +207,7 @@ const generateAuthActions = (config: { [key: string]: any }): ActionsExport => {
       persistAuthHeadersInDeviceStorage(Storage, response.headers)
       const userAttributesToSave = getUserAttributesFromResponse(userAttributes, response)
       dispatch(signInRequestSucceeded(userAttributesToSave))
-      return Promise.resolve(response.headers)
+      return Promise.resolve(response.data)
     } catch (error) {
       dispatch(signInRequestFailed())
       throw error
